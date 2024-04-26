@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      /* Adjust width as needed */
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: gray;
+      color: white;
+      /* Light gray background for headers */
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fafafa;
+      /* Alternate row colors */
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    nav ul {
+      background-color: #005a9c;
+      /* Dark blue background */
+      color: white;
+      padding: 10px 54.52px;
+    }
+
+
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffdd57;
+      background-color: gray;
+      /* Light yellow on hover */
+    }
+
+    section {
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #f0f0f0;
+      /* Light grey background */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      nav ul {
+        padding: 0;
+        text-align: center;
+      }
+
+      nav ul li {
+        display: block;
+        margin: 10px 0;
+      }
+
+      table {
+        width: 100%;
+        overflow-x: auto;
+        display: block;
+      }
+
+      th,
+      td {
+        white-space: nowrap;
+        padding: 8px;
+      }
+
+      section {
+        padding: 15px;
+        margin: 10px 0;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+      h2 {
+        font-size: 1.5em;
+      }
+
+      h3 {
+        font-size: 1.2em;
+      }
+
+      nav ul li a {
+        font-size: 0.9em;
+      }
+
+      body {
+        font-size: 14px;
+      }
+
+      section {
+        padding: 10px;
+      }
+    }
+
+    @media only screen and (min-width: 1280px) {
+      body {
+        font-size: 16px;
+        /* Slightly larger font size for better readability */
+      }
+
+      nav ul {
+        padding: 10px 20px;
+        /* More padding for a wider layout */
+      }
+
+      section {
+        padding: 25px;
+        /* More padding inside sections for aesthetic spacing */
+      }
+
+      table {
+        font-size: 16px;
+        /* Larger font size for tables for easier reading */
+      }
+
+      h2,
+      h3 {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const links = document.querySelectorAll("a[href^='#']");
+      for (const link of links) {
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+          let target = document.querySelector(this.getAttribute("href"));
+          target.scrollIntoView({
+            behavior: "smooth"
+          });
+        });
+      }
+    });
+  </script>
+  <title>Space Debris Detection & Tracking</title>
+</head>
+
+<body>
+  <nav class="container-fluid">
+    <ul>
+      <li><strong>Space Debris Detection & Tracking</strong></li>
+    </ul>
+    <ul>
+      <li><a href="#overview">Project Overview</a></li>
+      <li><a href="#objectives">Objectives</a></li>
+      <li><a href="#datasets">Datasets</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#code">Code</a></li>
+    </ul>
+  </nav>
+  <main class="container">
+    <div class="grid">
+      <section>
+        <hgroup>
+          <h2>Welcome to Space Debris Detection & Tracking</h2>
+          <h3>Madan Sai Daram, Venkata Anand Vikram Bharadwaj Kallakuri</h3>
+        </hgroup>
+        <p>Predicting the Position of Space debris with some Deep Learning and Machine Learning Model.</p>
+        <h3 id="overview">Project Overview</h3>
+        <p>The major purpose of our "Space Debris Detection & Tracking" project is to create and deploy new approaches
+          for accurately detecting, tracking, and analyzing space debris. As humanity's presence in space expands, the
+          collection of debris in Earth's orbit poses increasing threats. Our research aims to reduce these dangers by
+          improving the technological capabilities used to monitor and manage debris, hence improving the safety of
+          satellites, space stations, and space missions. This program is critical for maintaining the operational
+          integrity of present and future space infrastructure and the long-term sustainability of space activities.</p>
+        <h3>Relevance</h3>
+        <p>The "Space Debris Detection & Tracking" project is crucial as space traffic grows due to increased satellite
+          launches by both government and commercial entities. The increasing quantity of space debris, which ranges
+          from defunct satellites to rocket components, poses serious threats to active satellites and human
+          spaceflight. Such debris can result in disastrous collisions at high speeds. Additionally, the threat of
+          Kessler Syndrome, in which collisions in low Earth orbit can cause a chain reaction of additional collisions,
+          shows the importance of our mission. By improving debris identification and tracking systems, our initiative
+          contributes significantly to the safety of space missions and the long-term sustainability of space operations
+          around the world.</p>
+        <h3 id="objectives">Objectives</h3>
+        <p>Integrating diverse datasets to track and analyze space debris. Developing machine learning models to predict
+          debris movement. Evaluating the effectiveness of these models against traditional methods.</p>
+        <h3 id="datasets">Datasets</h3>
+        <h6 id="Space_Track_Data">Space-Track Data</h6>
+        <p><a href="https://www.space-track.org/auth/login" target=”_blank”>Space-Track.org</a> is an official source of
+          space data
+          managed by the U.S. Space Force. It offers detailed
+          tracking information on man-made satellites and other space debris. Access to its detailed catalog requires
+          a verified account, which can be obtained by registering on the <a
+            href="https://www.space-track.org/auth/login" target=”_blank”>Space-Track.org</a> website.</p>
+
+        <table>
+          <tr>
+            <th>Column Name</th>
+            <th>Column Type</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>International Designator</td>
+            <td>Object</td>
+            <td>Unique launch-related space object ID</td>
+          </tr>
+          <tr>
+            <td>NORAD CAT ID</td>
+            <td>Integer</td>
+            <td>Unique satellite tracking number</td>
+          </tr>
+          <tr>
+            <td>OBJECT_TYPE</td>
+            <td>Object</td>
+            <td>Classification of space object</td>
+          </tr>
+          <tr>
+            <td>Satellite Name</td>
+            <td>Object</td>
+            <td>Commonly recognized satellite title</td>
+          </tr>
+          <tr>
+            <td>Country</td>
+            <td>Object</td>
+            <td>Nation of satellite owner/operator</td>
+          </tr>
+          <tr>
+            <td>Launch</td>
+            <td>Object</td>
+            <td>Official date of satellite's launch</td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <th>International Designator</th>
+            <th>NORAD_CAT_ID</th>
+            <th>OBJECT_TYPE</th>
+            <th>Satellite Name</th>
+            <th>Country</th>
+            <th>Launch</th>
+          </tr>
+          <tr>
+            <td>1957-001A</td>
+            <td>1</td>
+            <td>ROCKET BODY</td>
+            <td>SL-1 R/B</td>
+            <td>CIS</td>
+            <td>10/4/57</td>
+          </tr>
+          <tr>
+            <td>1957-001B</td>
+            <td>2</td>
+            <td>PAYLOAD</td>
+            <td>SPUTNIK 1</td>
+            <td>CIS</td>
+            <td>10/4/57</td>
+          </tr>
+          <tr>
+            <td>1957-002A</td>
+            <td>3</td>
+            <td>PAYLOAD</td>
+            <td>SPUTNIK 2</td>
+            <td>CIS</td>
+            <td>11/3/57</td>
+          </tr>
+          <tr>
+            <td>1958-001A</td>
+            <td>4</td>
+            <td>PAYLOAD</td>
+            <td>EXPLORER 1</td>
+            <td>US</td>
+            <td>10/4/57</td>
+          </tr>
+          <tr>
+            <td>1958-002A</td>
+            <td>16</td>
+            <td>ROCKET BODY</td>
+            <td>VANGUARD</td>
+            <td>US</td>
+            <td>3/17/58</td>
+          </tr>
+          <tr>
+            <td>1958-002B</td>
+            <td>5</td>
+            <td>PAYLOAD</td>
+            <td>VANGUARD 1</td>
+            <td>US</td>
+            <td>3/17/58</td>
+          </tr>
+        </table>
+        <h6 style="text-align: center;">Types of Objects</h6>
+        <img style="display: block; margin: 0 auto;" src="Picture1.jpg">
+        <br>
+        <h6 style="text-align: center;">Debris trends over time</h6>
+        <img style="display: block; margin: 0 auto;" src="Picture2.jpg">
+        <h6 id="UCS_Satellite_Data">UCS Satellite Data</h6>
+        <p>The UCS Satellite Database, provided by the Union of Concerned Scientists, compiles a wide range of data on
+          operational satellites around the Earth, intended for researchers, policymakers, and the public. This database
+          does not require user registration and can be accessed on the UCS website.</p>
+
+
+
+        <table>
+          <table border="0" width="500" height="500">
+            <tr>
+              <th>Column Name</th>
+              <th>Column Type</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>NORAD Number</td>
+              <td>Integer</td>
+              <td>NORAD catalog identifier for the object</td>
+            </tr>
+            <tr>
+              <td>Name of Satellite</td>
+              <td>Object</td>
+              <td>The official name of the satellite</td>
+            </tr>
+            <tr>
+              <td>Country of Operator</td>
+              <td>Object</td>
+              <td>Nation controlling the satellite</td>
+            </tr>
+            <tr>
+              <td>Users</td>
+              <td>Object</td>
+              <td>End-users or beneficiaries of the satellite</td>
+            </tr>
+            <tr>
+              <td>Class of Orbit</td>
+              <td>Object</td>
+              <td>The orbital classification of the satellite</td>
+            </tr>
+          </table>
+
+          <table>
+            <tr>
+              <th>NORAD Number</th>
+              <th>Name of Satellite</th>
+              <th>Country of Operator</th>
+              <th>Users</th>
+              <th>Class of Orbit</th>
+            </tr>
+            <tr>
+              <td>44859</td>
+              <td>IHOPSAT-TD</td>
+              <td>USA</td>
+              <td>Commercial</td>
+              <td>LEO</td>
+            </tr>
+            <tr>
+              <td>42775</td>
+              <td>Aalto-1</td>
+              <td>Finland</td>
+              <td>Civil</td>
+              <td>LEO</td>
+            </tr>
+            <tr>
+              <td>41460</td>
+              <td>AAt-4</td>
+              <td>Denmark</td>
+              <td>Civil</td>
+              <td>LEO</td>
+            </tr>
+            <tr>
+              <td>39508</td>
+              <td>ABS-2</td>
+              <td>Multinational</td>
+              <td>Commercial</td>
+              <td>GEO</td>
+            </tr>
+            <tr>
+              <td>41588</td>
+              <td>ABS-2A</td>
+              <td>Multinational</td>
+              <td>Commercial</td>
+              <td>GEO</td>
+            </tr>
+          </table>
+          <br>
+          <h6 style="text-align: center;">Class-wise count of objects</h6>
+          <img style="display: block; margin: 0 auto;" src="Picture3.jpg">
+          <br><br><br>
+          <h6 style="text-align: center;">Types of End Users</h6>
+          <img style="display: block; margin: 0 auto;" src="Picture4.jpg">
+
+          <h6 id="Two_line_element_Data">Two-line element Data</h6>
+          <p>Two-Line Element (TLE) data provides essential information about the orbits of Earth-orbiting objects, such
+            as satellites and space debris. The TLE format comprises a standardized string of numbers that represent
+            orbital elements, including the object's inclination, right ascension of ascending node, eccentricity,
+            argument of perigee, mean anomaly, mean motion, and the revolution number at epoch. The Space-Track website
+            is a commonly used platform for accessing TLE data. It provides orbital data, historical element sets, and
+            other satellite-related information. Users are required to create an account to access the data. CelesTrak
+            is another resource that offers TLE data and further documentation on the TLE format. Both platforms are
+            pivotal for researchers, satellite operators, and enthusiasts who need accurate orbital data for tracking
+            and analysis.</p>
+
+          <p> You can find detailed TLE information and the necessary resources on CelesTrak and access the TLE data by
+            creating an account on Space-Track.</p>
+          <h6 style="text-align: center;">1 25544U 98067A   21275.48841729  .00001919  00000-0  43903-4 0  9993</h6>
+          <table>
+            <tr>
+              <th>Line</th>
+              <th>Component</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Line Number</td>
+              <td>Always the number 1</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Satellite Catalog Number (NORAD)</td>
+              <td>Five-digit satellite number assigned by NORAD</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Classification (U, C, S)</td>
+              <td>Security classification (U for unclassified, C for classified, S for secret)</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>International Designator</td>
+              <td>Year of launch (last two digits), launch number of that year, piece of the launch</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Epoch (Year and Day)</td>
+              <td>Year and Julian Day of the epoch (time of the TLE data) followed by the fractional portion of the day
+              </td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>First Time Derivative of Mean Motion</td>
+              <td>Rate of change of the satellite's mean motion (revolutions per day squared)</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Second Time Derivative of Mean Motion</td>
+              <td>Second derivative of mean motion (usually zero in publicly available TLES)</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>BSTAR Drag Term</td>
+              <td>The BSTAR drag term, representing atmospheric drag</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Ephemeris Type</td>
+              <td>Indicates the ephemeris model used (usually zero)</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Element Set Number</td>
+              <td>Sequential number of the element set</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Checksum for Line 1</td>
+              <td>Modulo 10 checksum for error detection</td>
+            </tr>
+          </table>
+          <br>
+          <h6 style="text-align: center;">2 25544  51.6435 344.7760 0002713  42.6643  73.6342 15.48815311211457</h6>
+          <table>
+
+            <tr>
+              <th>2</th>
+              <th>Line Number</th>
+              <th>Always the number 2</th>
+            </tr>
+            <tr>
+              <td>2</th>
+              <td>Satellite Catalog Number (NORAD)</th>
+              <td>Repeats the NORAD satellite number from line 1</th>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Inclination (degrees)</td>
+              <td>The angle of the orbit relative to Earth's equatorial plane</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Right Ascension of Ascending Node (degrees)</td>
+              <td>The point where the orbit crosses the equatorial plane from south to north</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Eccentricity</td>
+              <td>Shape of the orbit, given as a decimal without a leading decimal point</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Argument of Perigee (degrees)</td>
+              <td>Point in the orbit where it's closest to Earth</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Mean Anomaly (degrees)</td>
+              <td>Satellite's position in the orbit</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Mean Motion (revolutions per day)</td>
+              <td>The number of times the satellite orbits the Earth in one day</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Total Number of Orbits at Epoch</td>
+              <td>The total number of orbits completed by the satellite at the time of the epoch</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Checksum for Line 2</td>
+              <td>Modulo 10 checksum for error detection</td>
+            </tr>
+          </table>
+
+
+
+          <h3 id="methodology">Methodology</h3>
+          <p>Our methodology is designed to optimize space debris detection and tracking by integrating advanced data
+            processing and machine learning techniques:</p>
+          <ul>
+            <li>Space-Track Data, UCS Satellite Data, and Two-line Element Data: These datasets are fundamental in
+              providing comprehensive orbital and operational characteristics of space debris, enhancing our tracking
+              capabilities.</li>
+            <li>Data Preprocessing and Feature Engineering: We focus on processing NORAD IDs with substantial data
+              points
+              (500 per ID), ensuring detailed analysis and reliability. Our preprocessing efforts include cleaning data
+              for accuracy, normalizing formats for consistency, and engineering features that highlight critical debris
+              dynamics.</li>
+            <li>Machine Learning and Statistical Models: LSTM Networks: Employed for their ability to predict future
+              positions based on historical data. GDBT: Used for its robustness in handling complex datasets and
+              providing
+              predictive insights. Kalman Filter: Integrated for its effectiveness in real-time trajectory updating,
+              which
+              is crucial for maintaining current tracking information.</li>
+          </ul>
+          <h6 style="text-align: center;">Approach</h6>
+          <img style="display: block; margin: 0 auto;" src="Picture5.jpg">
+
+          <h3 id="results">Results</h3>
+          <h6>Results for Latitude:<br> MSE: 0.244
+            <br>MAE: 0.216
+            <br>RMSE: 0.494
+          </h6>
+          <img style="display: block; margin: 0 auto;" src="Picture6.jpeg">
+          <h6>Results for Longitude:<br> MSE: 7.356
+            <br>MAE: 2.148
+            <br>RMSE : 2.712
+          </h6>
+          <img style="display: block; margin: 0 auto;" src="Picture7.jpeg">
+          <h6>Results for Altitude: <br>MSE: 32852.244
+            <br>MAE: 116.6491
+            <br>RMSE : 181.251
+          </h6>
+          <img style="display: block; margin: 0 auto;" src="Picture8.jpeg">
+          <h3 id="code">Code</h3>
+          <p>The Source code for our project is available on GitHub. </p>
+          <a href="https://github.com/KVB02/Space-Debris-Detection-Tracking-and-Impact-Analysis/tree/main"
+            target=”_blank”>Space Debris
+            Detection & Tracking</a>
+          <h3 id="results">Contributors</h3>
+          <a href="https://www.linkedin.com/in/vikram-bharadwaj-kallakuri-ab1211256/" target=”_blank”>Venkata Anand
+            Vikram Bharadwaj
+            Kallakuri</a>&nbsp; <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn"
+            width="16" height="16"><br>
+          <a href="https://www.linkedin.com/in/madan-sai-daram-3b6298135?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+            target=”_blank”>Madan
+            Sai Daram</a>&nbsp; <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn"
+            width="16" height="16">
+
+          <h3 id="conclusion">Conclusion</h3>
+          <p>The LSTM model outperforms the GDBT model in predicting latitude and longitude, showcasing its strength
+            in
+            handling time-series data. However, its performance on altitude prediction is not as strong, suggesting
+            that
+            additional refinements or feature engineering may be necessary to enhance its accuracy in predicting this
+            particular dimension. Overall, the results point to the potential of LSTM models in geospatial predictions
+            but also highlight the complexities involved in modeling vertical spatial components.</p>
+
+
+      </section>
+    </div>
+  </main>
+  <footer class="container">
+    <small><a href="https://www.nasa.gov">NASA</a> • <a href="https://www.esa.int">ESA</a></small>
+  </footer>
+</body>
+
+</html>
